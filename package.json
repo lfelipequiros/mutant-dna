@@ -1,0 +1,10 @@
+{
+  "name": "mutant-dna",
+  "version": "1.0.0",
+  "description": "Meli test about mutant dna, cause magneto needs some help ",
+  "main": "index.js",
+  "repository": "https://github.com/lfelipequiros/mutant-dna",
+  "author": "Felipe Quiros",
+  "license": "MIT",
+  "private": null
+}
