@@ -2,8 +2,11 @@ import mongoose from 'mongoose';
 
 //this is a handy schema to get our DB storage uniform and work with them easilly
  const mutantSchema = mongoose.Schema({
-     dnaSequence: String,
-     result: Boolean,
+     dnaSequence: [String],
+     result: {
+        type: Boolean,
+        default: false
+    },
      createdTimestamp: {
          type: Date,
          default: new Date()

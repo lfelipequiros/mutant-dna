@@ -21,8 +21,8 @@
  }
 
  async function postController(req, res) {
-   console.log('Mutant POST Invoked');
    const mutant = req.body;
+   console.log('Mutant POST Invoked with', mutant);
    const newMutant = new MutantMessage(mutant);
    try {
             //same here to store new records
