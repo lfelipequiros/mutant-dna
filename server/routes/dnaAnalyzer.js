@@ -1,5 +1,6 @@
  import express from 'express';
  import MutantMessage from '../models/mutantMessage.js';
+ import isMutant from '../dna-analysis/index.js';
 
  const router = express.Router();
 
@@ -21,12 +22,25 @@
  }
 
  async function postController(req, res) {
+    //get request data
    const mutant = req.body;
-   console.log('Mutant POST Invoked with', mutant);
+
+   //something to make a quick and dirty benchmark
+   let initTime = new Date();
+
+   //Trigger out logic to check dna sequence
+   mutant.result = isMutant(mutant.dnaSequence);
+
+   //log the benchmark
+   let endDate = new Date();
+   console.log("server benchmark time:", endDate-initTime);
+
+   //create the MutantMessage that will be stored
    const newMutant = new MutantMessage(mutant);
    try {
-            //same here to store new records
-      await newMutant.save();
+      //same here to store new records
+      //await newMutant.save();
+      await Promise.resolve();
       res.status(201).json(newMutant);
    } catch (error) {
       res.status(409).json({ message: error.message });
