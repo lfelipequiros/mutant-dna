@@ -13,3 +13,7 @@ Decided to move to a MERN stack to be able to POST a new mutant and GET the reco
 
 I remember this stack cause I read about it and work with it in some proyects but is the second(?) time I fully create one from scratch.
 
+# Step 3
+
+Created a function to check horizontal strings for the desired pattern, but realize that if the matrix will be NxN like the exercise says, we can. use it to check vertically as well, (that's next step)
+
