@@ -7,12 +7,16 @@ const isMutant = (dnaSequence) => {
 const horizontalCheck = (dnaSequence) => {
     const countTrigger = 3;
     let result = false;
+
     let count = 0;
+    //let vCount = 0; //same horizontal logic
     let currentNitrogenBase = null;
+    //let currentVnitrogenBase = null; //same horizontal logic 
 
     for (var j = 0; j < dnaSequence.length; j++) { //loop on array
         var row = dnaSequence[j];
         currentNitrogenBase = row[0]; // get first item
+        //currentVnitrogenBase = dnaSequence[0][j]; // TODO will be used to check verticals
         for (var i = 1; i < row.length; i++) { //loop in the string from 2nd char
             if(row[i]===currentNitrogenBase){ //check if we have a match and if we do
                 count++; //start counting
