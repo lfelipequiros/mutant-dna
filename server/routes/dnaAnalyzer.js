@@ -33,14 +33,14 @@
 
    //log the benchmark
    let endDate = new Date();
-   console.log("server benchmark time:", endDate-initTime);
+   console.log("server benchmark time:", endDate-initTime, "is mutant: ", mutant.result);
 
    //create the MutantMessage that will be stored
    const newMutant = new MutantMessage(mutant);
    try {
       //same here to store new records
-      //await newMutant.save();
-      await Promise.resolve();
+      await newMutant.save();
+      //await Promise.resolve();
       res.status(201).json(newMutant);
    } catch (error) {
       res.status(409).json({ message: error.message });
