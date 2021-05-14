@@ -11,42 +11,40 @@ const horizontalCheck = (dnaSequence) => {
     const countTrigger = 3;
     let result = false;
 
-    let count = 0;
-    let vCount = 0; //same horizontal logic
-    let currentNitrogenBase = null;
-    let currentVnitrogenBase = null; //same horizontal logic 
+    let horizontal = new NBCounter();
+    let vertical = new NBCounter();
 
     for (var j = 0; j < dnaSequence.length; j++) { //loop on array
 
-        currentNitrogenBase = dnaSequence[j][0]; // first Horizontal item
-        currentVnitrogenBase = dnaSequence[0][j]; // first Vertical item
+        horizontal.currentNB = dnaSequence[j][0]; // first Horizontal item
+        vertical.currentNB = dnaSequence[0][j]; // first Vertical item
 
         for (var i = 1; i < dnaSequence[j].length; i++) { //loop in the string from 2nd char
 
-            if(dnaSequence[j][i]===currentNitrogenBase){ //check if we have a match and if we do
-                count++; //start counting
-                if(count>=countTrigger){ // check if we have enough matches to call it a win
+            if(dnaSequence[j][i] === horizontal.currentNB){ //check if we have a match and if we do
+                horizontal.count++; //start counting
+                if(horizontal.count >= countTrigger){ // check if we have enough matches to call it a win
                     result = true; // call it a win
-                    console.log("win horizontal", i, currentNitrogenBase, count);
+                    console.log("win horizontal", i, horizontal.currentNB, horizontal.count);
                     break; // break string loop
                 }
             }else{ //if we don't have a match
-                console.log("reset count horizontal", i, currentNitrogenBase, count);
-                count = 0; // reset count
-                currentNitrogenBase = dnaSequence[j][i]; // update nitrogen base we are looking for
+                console.log("reset count horizontal", i, horizontal.currentNB, horizontal.count);
+                horizontal.count = 0; // reset count
+                horizontal.currentNB = dnaSequence[j][i]; // update nitrogen base we are looking for
             }
 
-            if(dnaSequence[i][j]===currentVnitrogenBase){ //check if we have a match and if we do
-                vCount++; //start counting
-                if(vCount>=countTrigger){ // check if we have enough matches to call it a win
+            if(dnaSequence[i][j] === vertical.currentNB){ //check if we have a match and if we do
+                vertical.count++; //start counting
+                if(vertical.count>=countTrigger){ // check if we have enough matches to call it a win
                     result = true; // call it a win
-                    console.log("win vertical", i, currentVnitrogenBase, vCount);
+                    console.log("win vertical", i, vertical.currentNB, vertical.count);
                     break; // break string loop
                 }
             }else{ //if we don't have a match
-                console.log("reset count vertical", i, currentVnitrogenBase, vCount);
-                vCount = 0; // reset count
-                currentVnitrogenBase = dnaSequence[i][j]; // update nitrogen base we are looking for
+                console.log("reset count vertical", i, vertical.currentNB, vertical.count);
+                vertical.count = 0; // reset count
+                vertical.currentNB = dnaSequence[i][j]; // update nitrogen base we are looking for
             }
 
           }
@@ -56,5 +54,13 @@ const horizontalCheck = (dnaSequence) => {
     };
     return result;
 };
+
+/**
+ * Constructor to count NitrogenBases without creating multiple variables
+ */
+function NBCounter (){//NB - Stands for NitrogenBase
+    this.count = 0;
+    this.currentNB = null; 
+  };
 
 export default isMutant;
