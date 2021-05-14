@@ -38,12 +38,11 @@ Decided to move to a MERN stack to be able to POST a new mutant and GET the reco
 
 Created a function to check horizontal strings for the desired pattern, but realize that if the matrix will be NxN like the exercise says, we can. use it to check vertically as well, since it will be the exact same ammount of iterations (that's next step)
 
+## Step 4 Check Verticals
+
+Using the same Indexes used to check horizontals and duplicated variables, we can check horizontals at the same time that we do verticals, also, created a small constructor function to handle counts.
 
 # Missing Work
-
-## Check Verticals
-
-Using the same Indexes used to check horizontals and duplicated variables, we can check horizontals at the same time that we do verticals
 
 ## Check Diagonals
 
